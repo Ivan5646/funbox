@@ -1,40 +1,29 @@
 import React from 'react'
+import { food } from '../data'
 
 class Cats extends React.Component {
-  componentDidMount() {
-  }
+    constructor(props) {
+        super(props);
 
-  render() {
-    return (
-      <div className="cats">
-        <h3>Cats</h3>
-        <div className="cats__wrapper">
-          <div className="cats__card">
-            <div>Сказочное заморское яство</div>
-            <h4>Нямушка</h4>
-            <div>с фуа-гра</div>
-            <div>10 порций</div>
-            <div>мышь в подарок</div>
-          </div>
-          <div className="cats__card">
-            <div>Сказочное заморское яство</div>
-            <h4>Нямушка</h4>
-            <div>с фуа-гра</div>
-            <div>10 порций</div>
-            <div>мышь в подарок</div>
-          </div>
-          <div className="cats__card">
-            <div>Сказочное заморское яство</div>
-            <h4>Нямушка</h4>
-            <div>с фуа-гра</div>
-            <div>10 порций</div>
-            <div>мышь в подарок</div>
-          </div>
-        </div>
-      </div>
+    }
 
-    )
-  }
+    renderCards () {
+        console.log(food);
+        return food.map(item => (
+            <div key={item.id}>{item.title}</div>
+        ))
+    }
+
+    render() {
+        // console.log(food);
+        return (
+            <div className="cats">
+                <h3>Cats</h3>
+                {this.renderCards()}
+            </div>
+
+        )
+    }
 }
 
 export default Cats;
