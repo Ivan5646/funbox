@@ -1,0 +1,19 @@
+.cats {
+    background-image: url("../img/bg.png");
+    height: 100vh;
+    color: #fff;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__card {
+        background-image: url("../img/Photo.svg");
+        background-size: cover;
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+}
