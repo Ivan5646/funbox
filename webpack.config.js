@@ -4,23 +4,24 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html",  
+            template: "./src/index.html",
         })
     ],
     devtool: 'inline-source-map',
     module: {
         rules: [
-            { test: /\.css$/, use:['style-loader', 'css-loader']},
+            { test: /\.s?css/, use:['style-loader', 'css-loader', 'sass-loader'] },
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
             {
                 test: /\.html$/,
                 use: [
-                  {
-                    loader: "html-loader",
-                    options: { minimize: true }
-                  }
+                    {
+                        loader: "html-loader",
+                        options: { minimize: true }
+                    }
                 ]
-              }
+            },
+            { test: /\.(png|jpg|gif|svg)$/, loader: 'file-loader', options: {} },
         ]
     }
 };
