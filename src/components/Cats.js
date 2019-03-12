@@ -23,7 +23,10 @@ class Cats extends React.Component {
                     </div>
                     <div className="cats__card-bottom">
                         <div className="cats__cat"></div>
-                        <div>{item.weight}</div>
+                        <div className="cats__weight-wrapper">
+                            <div className="cats__weight">{item.weight}</div>
+                            <div className="cats__weight-units">кг</div>
+                        </div>
                     </div>
                 </div>
                 <div className="cats__description">{item.description}</div>
