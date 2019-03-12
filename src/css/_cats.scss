@@ -1,7 +1,8 @@
 .cats {
     background-image: url("../img/bg.png");
     height: 100vh;
-    color: #fff;
+    color: #666666;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 
     &__wrapper {
         display: flex;
@@ -9,11 +10,59 @@
     }
 
     &__card {
-        background-image: url("../img/cardBg.png");
+        background-image: url("../img/cardsBg/default.png");
         background-size: cover;
+        height: 480px;
+        width: 320px;
+        //display: flex;
+        //flex-direction: column;
+        //justify-content: space-around;
+        //align-items: center;
     }
 
-    h3 {
+    &__card-top {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 50px;
+    }
+
+    &__cat {
+        background-image: url("../img/cat.svg");
+    }
+
+    &__header {
         margin-top: 0;
+        font-family: ExoThin, "Trebuchet MS", sans-serif;
+        color: #ffffff;
+        font-size: 36px;
+    }
+
+    &__card-header {
+        font-size: 16px;
+        margin-top: 24px;
+    }
+
+    &__card-details {
+        font-size: 14px;
+    }
+
+    &__description {
+        font-size: 13px;
+        color: #fff;
+        text-align: center;
+        margin-top: 16px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+    
+    h1, h2 {
+        color: #000;
     }
 }
