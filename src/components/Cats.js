@@ -5,13 +5,48 @@ class Cats extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            selected: []
+        }
+    }
+
+    selectProduct(id) {
+        if( this.state.selected.includes(id) ) {
+            this.setState({ selected: this.state.selected.filter(e => e !== id)});
+            //setTimeout( () => {console.log("remove", this.state);}, 200);
+        } else {
+            console.log("selectProduct", id);
+            this.setState({ selected: [...this.state.selected, id] });
+            //setTimeout( () => {console.log("this.state", this.state);}, 200);
+        }
+    }
+
+    selectedBg(id) {
+        if( this.state.selected.includes(id) ) {
+            console.log("selectedBg");
+            return "cats__card--selected";
+        } else {
+            console.log("selectedBg empty");
+            return "";
+        }
+    }
+
+    showDescription(id, item) {
+        if( this.state.selected.includes(id) ) {
+            return <div className="cats__description">{item.description}</div>
+        } else {
+            return (
+            <div className="cats__description">
+                Чего сидишь? Порадуй котэ, <a onClick={() => {this.selectProduct(item._id)}}>купи.</a>
+            </div>
+            )
+        }
     }
 
     renderCards () {
-        console.log(food);
         return food.map(item => (
-            <div className="cats__card-wrapper">
-                <div key={item.id} className="cats__card">
+            <div key={item._id} className="cats__card-wrapper" onClick={() => {this.selectProduct(item._id)}}>
+                <div className={`cats__card ${this.selectedBg(item._id)}`}>
                     <div className="cats__card-top">
                         <div className="cats__card-header">Сказочное заморское яство</div>
                         <h1>Нямушка</h1>
@@ -24,12 +59,12 @@ class Cats extends React.Component {
                     <div className="cats__card-bottom">
                         <div className="cats__cat"></div>
                         <div className="cats__weight-wrapper">
-                            <div className="cats__weight">{item.weight}</div>
+                            <div className="cats__weight">{item.weight.toString().replace(".", ",")}</div>
                             <div className="cats__weight-units">кг</div>
                         </div>
                     </div>
                 </div>
-                <div className="cats__description">{item.description}</div>
+                {this.showDescription(item._id, item)}
             </div>
         ))
     }
