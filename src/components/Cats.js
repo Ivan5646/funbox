@@ -6,7 +6,9 @@ class Cats extends React.Component {
         super(props);
 
         this.state = {
-            selected: []
+            selected: [],
+            cardsMouseLeft: [],
+            cardHover: ''
         }
     }
 
@@ -21,12 +23,30 @@ class Cats extends React.Component {
         }
     }
 
+    cardMouseLeave(id) {
+        // add to this.state.cardsMouseLeft
+        if ( this.state.selected.includes(id) && !this.state.cardsMouseLeft.includes(id) ) {
+            this.setState({ cardsMouseLeft: [...this.state.cardsMouseLeft, id] });
+            //setTimeout( () => {console.log("this.state", this.state);}, 200);
+            console.log("cardMouseLeave added", id);
+        }
+    }
+
+    cardMouseEnter(id) {
+        // remove from this.state.cardsMouseLeft
+        if( this.state.selected.includes(id) && this.state.cardsMouseLeft.includes(id) ) {
+            this.setState({ cardsMouseLeft: this.state.cardsMouseLeft.filter(e => e !== id)});
+            //setTimeout( () => {console.log("remove", this.state);}, 200);
+            console.log("cardMouseLeave removed", id);
+        }
+    }
+
     selectedBg(id) {
         if( this.state.selected.includes(id) ) {
-            console.log("selectedBg");
+            // console.log("selectedBg");
             return "cats__card--selected";
         } else {
-            console.log("selectedBg empty");
+            // console.log("selectedBg empty");
             return "";
         }
     }
@@ -43,12 +63,22 @@ class Cats extends React.Component {
         }
     }
 
+    showCardHeader(id) {
+        // debugger;
+        if( this.state.selected.includes(id) && this.state.cardsMouseLeft.includes(id) ) {
+            // if card on hover
+            return <div className="cats__card-header">Котэ не одобряет</div>;
+        } else {
+            return <div className="cats__card-header">Сказочное заморское яство</div>;
+        }
+    }
+
     renderCards () {
         return food.map(item => (
             <div key={item._id} className="cats__card-wrapper" onClick={() => {this.selectProduct(item._id)}}>
                 <div className={`cats__card ${this.selectedBg(item._id)}`}>
-                    <div className="cats__card-top">
-                        <div className="cats__card-header">Сказочное заморское яство</div>
+                    <div className="cats__card-top" onMouseLeave={() => this.cardMouseLeave(item._id)} onMouseEnter={() => {this.cardMouseEnter(item._id)}}>
+                        {this.showCardHeader(item._id)}
                         <h1>Нямушка</h1>
                         <h2>{item.title}</h2>
                         <div className="cats__card-details">
