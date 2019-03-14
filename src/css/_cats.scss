@@ -30,16 +30,24 @@
         flex-direction: column;
         justify-content: space-between;
 
-        &:hover {
+        //&:hover {
+        //    background-image: url("../img/cardsBg/defaultHover.png");
+        //}
+
+        &--default-hover:hover {
             background-image: url("../img/cardsBg/defaultHover.png");
         }
 
         &--selected {
             background-image: url("../img/cardsBg/selected.png");
 
-            &:hover {
-                background-image: url("../img/cardsBg/selectedHover.png");
-            }
+            //&:hover {
+            //    background-image: url("../img/cardsBg/selectedHover.png");
+            //}
+        }
+
+        &--selectedHover {
+            background-image: url("../img/cardsBg/selectedHover.png");
         }
     }
 
@@ -141,10 +149,14 @@
     background-color: #2ea8e6;
 }
 
-.cats__card--selected .cats__weight-wrapper {
+//.cats__card--selected .cats__weight-wrapper {
+//    background-color: #d91667;
+//}
+
+.cats__card--selected:hover .cats__weight-wrapper { // bright pink when mouse in
     background-color: #d91667;
 }
 
-.cats__card--selected:hover .cats__weight-wrapper {
+.cats__card--selectedHover .cats__weight-wrapper { // pale pink when mouse out
     background-color: #e62e7a;
 }

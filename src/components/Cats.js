@@ -8,7 +8,8 @@ class Cats extends React.Component {
         this.state = {
             selected: [],
             cardsMouseLeft: [],
-            cardHover: ''
+            cardHovered: '',
+
         }
     }
 
@@ -23,12 +24,26 @@ class Cats extends React.Component {
         }
     }
 
+    changeBg(id) {
+        if (this.state.selected.includes(id) && this.state.cardsMouseLeft.includes(id)) {
+            // selected hover
+            return "cats__card--selectedHover";
+        } else if ( this.state.selected.includes(id) ) {
+            // selected
+            return "cats__card--selected";
+        }  else {
+            // default hover
+            return "cats__card--default-hover";
+        }
+    }
+
     cardMouseLeave(id) {
         // add to this.state.cardsMouseLeft
         if ( this.state.selected.includes(id) && !this.state.cardsMouseLeft.includes(id) ) {
             this.setState({ cardsMouseLeft: [...this.state.cardsMouseLeft, id] });
             //setTimeout( () => {console.log("this.state", this.state);}, 200);
             console.log("cardMouseLeave added", id);
+            // this.setState({cardHovered: false});
         }
     }
 
@@ -38,18 +53,24 @@ class Cats extends React.Component {
             this.setState({ cardsMouseLeft: this.state.cardsMouseLeft.filter(e => e !== id)});
             //setTimeout( () => {console.log("remove", this.state);}, 200);
             console.log("cardMouseLeave removed", id);
+        } else {
+            console.log("entered");
+            // this.setState({cardHovered: true});
         }
     }
 
-    selectedBg(id) {
-        if( this.state.selected.includes(id) ) {
-            // console.log("selectedBg");
-            return "cats__card--selected";
-        } else {
-            // console.log("selectedBg empty");
-            return "";
-        }
-    }
+    // selectedBg(id) {
+    //     if ( this.state.cardHovered ) {
+    //         // hovered style
+    //         return "cats__card--selectedHover"
+    //     } else if ( this.state.selected.includes(id) ) {
+    //         // console.log("selectedBg");
+    //         return "cats__card--selected";
+    //     } else {
+    //         // console.log("selectedBg empty");
+    //         return "";
+    //     }
+    // }
 
     showDescription(id, item) {
         if( this.state.selected.includes(id) ) {
@@ -64,7 +85,6 @@ class Cats extends React.Component {
     }
 
     showCardHeader(id) {
-        // debugger;
         if( this.state.selected.includes(id) && this.state.cardsMouseLeft.includes(id) ) {
             // if card on hover
             return <div className="cats__card-header">Котэ не одобряет</div>;
@@ -76,8 +96,8 @@ class Cats extends React.Component {
     renderCards () {
         return food.map(item => (
             <div key={item._id} className="cats__card-wrapper" onClick={() => {this.selectProduct(item._id)}}>
-                <div className={`cats__card ${this.selectedBg(item._id)}`}>
-                    <div className="cats__card-top" onMouseLeave={() => this.cardMouseLeave(item._id)} onMouseEnter={() => {this.cardMouseEnter(item._id)}}>
+                <div className={`cats__card ${this.changeBg(item._id)}`} onMouseLeave={() => this.cardMouseLeave(item._id)} onMouseEnter={() => {this.cardMouseEnter(item._id)}}>
+                    <div className="cats__card-top">
                         {this.showCardHeader(item._id)}
                         <h1>Нямушка</h1>
                         <h2>{item.title}</h2>
