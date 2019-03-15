@@ -20,35 +20,54 @@
         transform: translateY(-50%);
     }
 
+    &__card-main {
+        
+    }
+
     &__card {
         position: relative;
-        background-image: url("../img/cardsBg/default.png");
+        //background-image: url("../img/cardsBg/default.png");
+        background-color: #F2F2F2;
         background-size: cover;
         height: 480px;
         width: 320px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        border-bottom: 4px solid #1698d9;
+        border-left: 4px solid #1698d9;
+        border-right: 4px solid #1698d9;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
 
-        //&:hover {
-        //    background-image: url("../img/cardsBg/defaultHover.png");
+        &::after {
+            position: absolute;
+            top: -45px;
+            left: -4px;
+            content: '';
+            z-index: -1;
+            width: 45px;
+            height: 45px;
+            background-color: #f2f2f2;
+            border-left: 4px solid #1698d9;
+            transform-origin: bottom left;
+            transform: skew(-45deg, 0deg);
+        }
+
+        //&--default-hover:hover {
+        //    //background-image: url("../img/cardsBg/defaultHover.png");
+        //    border-color: #2ea8e6;
         //}
-
-        &--default-hover:hover {
-            background-image: url("../img/cardsBg/defaultHover.png");
-        }
-
-        &--selected {
-            background-image: url("../img/cardsBg/selected.png");
-
-            //&:hover {
-            //    background-image: url("../img/cardsBg/selectedHover.png");
-            //}
-        }
-
-        &--selectedHover {
-            background-image: url("../img/cardsBg/selectedHover.png");
-        }
+        //
+        //&--selected {
+        //    //background-image: url("../img/cardsBg/selected.png");
+        //    border-color: #d91667;
+        //}
+        //
+        //&--selectedHover {
+        //    //background-image: url("../img/cardsBg/selectedHover.png");
+        //    border-color: #e62e7a;
+        //}
     }
 
     &__card-top {
@@ -71,8 +90,14 @@
     }
 
     &__card-header {
+        height: 41px; //45
         font-size: 16px;
-        margin: 20px 0 6px 0;
+        margin: 0 0 0 45px;
+        //padding: 20px 0 0 5px;
+        background-color: #F2F2F2;
+        border-top: 4px solid #1698d9;
+        border-right: 4px solid #1698d9;
+        border-top-right-radius: 12px;
     }
 
     &__card-details {
@@ -145,18 +170,50 @@
 }
 
 
-.cats__card:hover .cats__weight-wrapper {
+//.cats__card-main:hover .cats__weight-wrapper {
+//    background-color: #2ea8e6;
+//}
+//
+//.cats__card--selected .cats__weight-wrapper { // bright pink when first selected
+//    background-color: #d91667;
+//}
+//
+//.cats__card--selected:hover .cats__weight-wrapper { // bright pink when mouse in
+//    background-color: #d91667;
+//}
+//
+//.cats__card--selectedHover .cats__weight-wrapper { // pale pink when mouse out
+//    background-color: #e62e7a;
+//}
+//
+//.cats__card-main:hover .cats__card-header {
+//    border-color: #2ea8e6;
+//}
+//
+//.cats__card--selected .cats__card-header { // bright pink when first selected
+//    border-color: #d91667;
+//}
+
+
+
+// .cats__card-main
+.cats__card-main--default-hover:hover .cats__card-header, .cats__card-main--default-hover:hover .cats__card, .cats__card-main--default-hover:hover .cats__card::after {
+    border-color: #2ea8e6;
+}
+.cats__card-main--default-hover:hover .cats__weight-wrapper {
     background-color: #2ea8e6;
 }
 
-//.cats__card--selected .cats__weight-wrapper {
-//    background-color: #d91667;
-//}
-
-.cats__card--selected:hover .cats__weight-wrapper { // bright pink when mouse in
+.cats__card-main--selected .cats__card-header, .cats__card-main--selected .cats__card, .cats__card-main--selected .cats__card::after {
+    border-color: #d91667;
+}
+.cats__card-main--selected .cats__weight-wrapper {
     background-color: #d91667;
 }
 
-.cats__card--selectedHover .cats__weight-wrapper { // pale pink when mouse out
+.cats__card-main--selectedHover .cats__card-header, .cats__card-main--selectedHover .cats__card, .cats__card-main--selectedHover .cats__card::after {
+    border-color: #e62e7a;
+}
+.cats__card-main--selectedHover .cats__weight-wrapper {
     background-color: #e62e7a;
 }
