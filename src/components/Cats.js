@@ -25,13 +25,13 @@ class Cats extends React.Component {
     changeBg(id) {
         if (this.state.selected.includes(id) && this.state.cardsMouseLeft.includes(id)) {
             // selected hover
-            return "cats__card-main--selectedHover";
+            return "cats__card--selectedHover";
         } else if ( this.state.selected.includes(id) ) {
             // selected
-            return "cats__card-main--selected";
+            return "cats__card--selected";
         }  else {
             // default hover
-            return "cats__card-main--default-hover";
+            return "cats__card--default-hover";
         }
     }
 
@@ -77,9 +77,9 @@ class Cats extends React.Component {
     renderCards () {
         return food.map(item => (
             <div key={item._id} className="cats__card-wrapper" onClick={() => {this.selectProduct(item._id)}}>
-                <div className={`cats__card-main ${this.changeBg(item._id)}`} onMouseLeave={() => this.cardMouseLeave(item._id)} onMouseEnter={() => {this.cardMouseEnter(item._id)}}>
+                <div className={`cats__card ${this.changeBg(item._id)}`} onMouseLeave={() => this.cardMouseLeave(item._id)} onMouseEnter={() => {this.cardMouseEnter(item._id)}}>
                     {this.showCardHeader(item._id)}
-                    <div className="cats__card">
+                    <div className="cats__card-main">
                         <div className="cats__card-top">
                             <h1>Нямушка</h1>
                             <h2>{item.title}</h2>

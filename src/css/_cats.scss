@@ -1,10 +1,10 @@
 .cats {
     background-image: url("../img/bg.png");
-    height: 100vh;
+    //height: 100vh;
     color: #666666;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
 
-    h1, h2, h3, h4, h5, h6 {
+    h1, h2, h4, h5, h6 {
         margin: 0;
     }
 
@@ -14,22 +14,27 @@
 
     &__wrapper {
         display: flex;
-        justify-content: space-around;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        justify-content: center;
+        //position: relative;
+        //top: 50%;
+        //transform: translateY(-50%);
+        flex-wrap: wrap;
     }
 
-    &__card-main {
-        
+    &__card-wrapper {
+        margin: 0 40px 30px 40px;
     }
 
     &__card {
+
+    }
+
+    &__card-main {
         position: relative;
         //background-image: url("../img/cardsBg/default.png");
         background-color: #F2F2F2;
         background-size: cover;
-        height: 480px;
+        height: 430px;
         width: 320px;
         display: flex;
         flex-direction: column;
@@ -45,7 +50,7 @@
             top: -45px;
             left: -4px;
             content: '';
-            z-index: -1;
+            //z-index: -1;
             width: 45px;
             height: 45px;
             background-color: #f2f2f2;
@@ -53,21 +58,6 @@
             transform-origin: bottom left;
             transform: skew(-45deg, 0deg);
         }
-
-        //&--default-hover:hover {
-        //    //background-image: url("../img/cardsBg/defaultHover.png");
-        //    border-color: #2ea8e6;
-        //}
-        //
-        //&--selected {
-        //    //background-image: url("../img/cardsBg/selected.png");
-        //    border-color: #d91667;
-        //}
-        //
-        //&--selectedHover {
-        //    //background-image: url("../img/cardsBg/selectedHover.png");
-        //    border-color: #e62e7a;
-        //}
     }
 
     &__card-top {
@@ -82,7 +72,7 @@
     }
 
     &__header {
-        margin-top: 0;
+        margin: 0 0 30px 0;
         font-family: ExoThin, "Trebuchet MS", sans-serif;
         color: #ffffff;
         font-size: 36px;
@@ -93,11 +83,15 @@
         height: 41px; //45
         font-size: 16px;
         margin: 0 0 0 45px;
+        padding-left: 10px;
+        line-height: 55px;
         //padding: 20px 0 0 5px;
         background-color: #F2F2F2;
         border-top: 4px solid #1698d9;
         border-right: 4px solid #1698d9;
         border-top-right-radius: 12px;
+        position: relative;
+        z-index: 1;
     }
 
     &__card-details {
@@ -124,18 +118,20 @@
         background-size: contain;
         width: 254px;
         height: 271px;
+        border-bottom-left-radius: 15px;
     }
 
     &__card-bottom {
         position: absolute;
-        bottom: -15px;
-        left: 4px;
+        bottom: -6px;
+        left: 0;
         display: flex;
+        //z-index: -1;
     }
 
     &__weight-wrapper {
         position: relative;
-        top: 160px;
+        top: 174px;
         right: 30px;
         width: 80px;
         height: 80px;
@@ -167,53 +163,36 @@
         font-size: 24px;
         margin-bottom: 14px;
     }
+
+    @media only screen and (max-width: 460px) {
+        &__card-wrapper {
+            margin: 0 0 30px 0;
+        }
+
+        &__card-main {
+            width: 300px;
+        }
+    }
 }
-
-
-//.cats__card-main:hover .cats__weight-wrapper {
-//    background-color: #2ea8e6;
-//}
-//
-//.cats__card--selected .cats__weight-wrapper { // bright pink when first selected
-//    background-color: #d91667;
-//}
-//
-//.cats__card--selected:hover .cats__weight-wrapper { // bright pink when mouse in
-//    background-color: #d91667;
-//}
-//
-//.cats__card--selectedHover .cats__weight-wrapper { // pale pink when mouse out
-//    background-color: #e62e7a;
-//}
-//
-//.cats__card-main:hover .cats__card-header {
-//    border-color: #2ea8e6;
-//}
-//
-//.cats__card--selected .cats__card-header { // bright pink when first selected
-//    border-color: #d91667;
-//}
-
-
 
 // .cats__card-main
-.cats__card-main--default-hover:hover .cats__card-header, .cats__card-main--default-hover:hover .cats__card, .cats__card-main--default-hover:hover .cats__card::after {
+.cats__card--default-hover:hover .cats__card-header, .cats__card--default-hover:hover .cats__card-main, .cats__card--default-hover:hover .cats__card-main::after {
     border-color: #2ea8e6;
 }
-.cats__card-main--default-hover:hover .cats__weight-wrapper {
+.cats__card--default-hover:hover .cats__weight-wrapper {
     background-color: #2ea8e6;
 }
 
-.cats__card-main--selected .cats__card-header, .cats__card-main--selected .cats__card, .cats__card-main--selected .cats__card::after {
+.cats__card--selected .cats__card-header, .cats__card--selected .cats__card-main, .cats__card--selected .cats__card-main::after {
     border-color: #d91667;
 }
-.cats__card-main--selected .cats__weight-wrapper {
+.cats__card--selected .cats__weight-wrapper {
     background-color: #d91667;
 }
 
-.cats__card-main--selectedHover .cats__card-header, .cats__card-main--selectedHover .cats__card, .cats__card-main--selectedHover .cats__card::after {
+.cats__card--selectedHover .cats__card-header, .cats__card--selectedHover .cats__card-main, .cats__card--selectedHover .cats__card-main::after {
     border-color: #e62e7a;
 }
-.cats__card-main--selectedHover .cats__weight-wrapper {
+.cats__card--selectedHover .cats__weight-wrapper {
     background-color: #e62e7a;
 }
