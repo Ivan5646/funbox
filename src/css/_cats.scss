@@ -1,8 +1,12 @@
 .cats {
     background-image: url("../img/bg.png");
-    //height: 100vh;
+    min-height: 100vh;
     color: #666666;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     h1, h2, h4, h5, h6 {
         margin: 0;
@@ -10,6 +14,10 @@
 
     h1, h2 {
         color: #000;
+    }
+
+    &__inner {
+
     }
 
     &__wrapper {
@@ -22,7 +30,27 @@
     }
 
     &__card-wrapper {
-        margin: 0 40px 30px 40px;
+        margin: 0 40px 0 40px;
+
+        &--disabled {
+            pointer-events: none;
+
+            .cats__weight-wrapper {
+                background-color: #b3b3b3;
+            }
+
+            .cats__card-main, .cats__card-main::after, .cats__card-header{
+                border-color: #b3b3b3;
+            }
+
+            .cats__cat {
+                opacity: 0.5;
+            }
+
+            .cats__card-top h1, .cats__card-top h2, .cats__card-details, .cats__card-header div {
+                opacity: 0.2;
+            }
+        }
     }
 
     &__card {
@@ -110,6 +138,10 @@
             border-bottom: 1px dashed #1698d9;
             cursor: pointer;
         }
+
+        &--yellow {
+            color: #ffff66;
+        }
     }
 
     &__cat {
@@ -164,6 +196,16 @@
         margin-bottom: 14px;
     }
 
+    @media only screen and (max-width: 1253px) {
+        &__header {
+            margin-top: 20px;
+        }
+
+        &__card-wrapper {
+            margin-bottom: 30px;
+        }
+    }
+
     @media only screen and (max-width: 460px) {
         &__card-wrapper {
             margin: 0 0 30px 0;
@@ -171,6 +213,14 @@
 
         &__card-main {
             width: 300px;
+        }
+
+        &__header {
+            margin-top: 10px;
+        }
+
+        &__weight-wrapper {
+            right: 40px;
         }
     }
 }

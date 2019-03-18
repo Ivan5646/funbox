@@ -8,7 +8,7 @@ class Cats extends React.Component {
         this.state = {
             selected: [],
             cardsMouseLeft: [],
-        }
+        };
     }
 
     selectProduct(id) {
@@ -54,29 +54,34 @@ class Cats extends React.Component {
     }
     
     showDescription(id, item) {
-        if( this.state.selected.includes(id) ) {
-            return <div className="cats__description">{item.description}</div>
+        if ( this.state.selected.includes(id) ) {
+            return <div className="cats__description">{item.description.inStock}</div>
         } else {
-            return (
-            <div className="cats__description">
-                Чего сидишь? Порадуй котэ, <a onClick={() => {this.selectProduct(item._id)}}>купи.</a>
-            </div>
-            )
+            if (item.inStock) {
+                return (
+                    <div className="cats__description">
+                        Чего сидишь? Порадуй котэ, <a onClick={() => {this.selectProduct(item._id)}}>купи.</a>
+                    </div>
+                )
+            } else {
+                return <div className="cats__description cats__description--yellow">{item.description.outOfStock}</div>
+            }
+
         }
     }
 
     showCardHeader(id) {
         if( this.state.selected.includes(id) && this.state.cardsMouseLeft.includes(id) ) {
             // if card is hovered on
-            return <div className="cats__card-header">Котэ не одобряет</div>;
+            return <div className="cats__card-header"><div>Котэ не одобряет</div></div>;
         } else {
-            return <div className="cats__card-header">Сказочное заморское яство</div>;
+            return <div className="cats__card-header"><div>Сказочное заморское яство</div></div>;
         }
     }
 
     renderCards () {
         return food.map(item => (
-            <div key={item._id} className="cats__card-wrapper" onClick={() => {this.selectProduct(item._id)}}>
+            <div key={item._id} className={`cats__card-wrapper ${!item.inStock ? "cats__card-wrapper--disabled" : ""}`}  onClick={() => {this.selectProduct(item._id)}}>
                 <div className={`cats__card ${this.changeBg(item._id)}`} onMouseLeave={() => this.cardMouseLeave(item._id)} onMouseEnter={() => {this.cardMouseEnter(item._id)}}>
                     {this.showCardHeader(item._id)}
                     <div className="cats__card-main">
@@ -105,9 +110,11 @@ class Cats extends React.Component {
     render() {
         return (
             <div className="cats container">
-                <h3 className="cats__header">Ты сегодня покормил кота?</h3>
-                <div className="cats__wrapper">
-                    {this.renderCards()}
+                <div className="cats__inner">
+                    <h3 className="cats__header">Ты сегодня покормил кота?</h3>
+                    <div className="cats__wrapper">
+                        {this.renderCards()}
+                    </div>
                 </div>
             </div>
 
