@@ -54,7 +54,7 @@
     }
 
     &__card {
-
+        cursor: pointer;
     }
 
     &__card-main {
@@ -105,6 +105,7 @@
         color: #ffffff;
         font-size: 36px;
         text-align: center;
+        font-weight: 400;
     }
 
     &__card-header {
@@ -196,6 +197,32 @@
         margin-bottom: 14px;
     }
 
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        /* IE10+ CSS styles go here */
+        height: 100vh;
+
+        &__card-header {
+            top: 1px;
+        }
+
+        &__card-main::after {
+            top: -44px;
+        }
+
+        &__cat {
+            border-bottom-left-radius: 30px;
+        }
+
+        &__card-bottom {
+            bottom: -17px;
+        }
+
+        &__weight-wrapper {
+            top: 164px;
+            right: 17px;
+        }
+    }
+
     @media only screen and (max-width: 1253px) {
         &__header {
             margin-top: 20px;
@@ -221,6 +248,10 @@
 
         &__weight-wrapper {
             right: 40px;
+        }
+
+        &__description {
+            max-width: 300px;
         }
     }
 }

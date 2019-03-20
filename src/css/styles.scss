@@ -7,6 +7,9 @@ body {
 @font-face {
     font-family: ExoThin;
     src: url("fonts/Exo2.0-Thin.otf");
+    src: url('fonts/Exo2.0-Thin.eot') format('embedded-opentype');
+    src: url('fonts/Exo2.0-Thin.eot?#iefix') format('embedded-opentype'), url('fonts/Exo2.0-Thin.woff') format('woff'),
+    url('fonts/Exo2.0-Thin.ttf') format('truetype');
 }
 
 .container {

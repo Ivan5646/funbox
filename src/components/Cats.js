@@ -90,7 +90,7 @@ class Cats extends React.Component {
                             <h2>{item.title}</h2>
                             <div className="cats__card-details">
                                 <div>{item.amount} порций</div>
-                                <div>{item.bonus} мышь в подарок</div>
+                                <div>{item.bonus}</div>
                             </div>
                         </div>
                         <div className="cats__card-bottom">
@@ -101,8 +101,8 @@ class Cats extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {this.showDescription(item._id, item)}
                 </div>
+                {this.showDescription(item._id, item)}
             </div>
         ))
     }

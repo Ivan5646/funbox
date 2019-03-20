@@ -21,7 +21,7 @@ module.exports = {
                     }
                 ]
             },
-            { test: /\.(png|jpg|gif|svg|otf)$/, loader: 'file-loader', options: {} },
+            { test: /\.(png|jpg|gif|svg|otf|eot|ttf|woff)$/, loader: 'file-loader', options: {} },
         ]
     }
 };
