@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: inset 0 0 300px rgba(0,0,0,0.3);
 
     h1, h2, h4, h5, h6 {
         margin: 0;
@@ -23,9 +24,6 @@
     &__wrapper {
         display: flex;
         justify-content: center;
-        //position: relative;
-        //top: 50%;
-        //transform: translateY(-50%);
         flex-wrap: wrap;
     }
 
@@ -55,6 +53,18 @@
 
     &__card {
         cursor: pointer;
+
+        &--default-hover:hover &-header, &--default-hover:hover &-main, &--default-hover:hover &-main::after {
+            border-color: #2ea8e6;
+        }
+
+        &--selected &-header, &--selected &-main, &--selected &-main::after {
+            border-color: #d91667;
+        }
+
+        &--selectedHover &-header, &--selectedHover &-main, &--selectedHover &-main::after {
+            border-color: #e62e7a;
+        }
     }
 
     &__card-main {
@@ -114,7 +124,6 @@
         margin: 0 0 0 45px;
         padding-left: 10px;
         line-height: 55px;
-        //padding: 20px 0 0 5px;
         background-color: #F2F2F2;
         border-top: 4px solid #1698d9;
         border-right: 4px solid #1698d9;
@@ -159,7 +168,6 @@
         bottom: -6px;
         left: 0;
         display: flex;
-        //z-index: -1;
     }
 
     &__weight-wrapper {
@@ -256,24 +264,15 @@
     }
 }
 
-// .cats__card-main
-.cats__card--default-hover:hover .cats__card-header, .cats__card--default-hover:hover .cats__card-main, .cats__card--default-hover:hover .cats__card-main::after {
-    border-color: #2ea8e6;
-}
+// .cats__weight-wrapper hover
 .cats__card--default-hover:hover .cats__weight-wrapper {
     background-color: #2ea8e6;
 }
 
-.cats__card--selected .cats__card-header, .cats__card--selected .cats__card-main, .cats__card--selected .cats__card-main::after {
-    border-color: #d91667;
-}
 .cats__card--selected .cats__weight-wrapper {
     background-color: #d91667;
 }
 
-.cats__card--selectedHover .cats__card-header, .cats__card--selectedHover .cats__card-main, .cats__card--selectedHover .cats__card-main::after {
-    border-color: #e62e7a;
-}
 .cats__card--selectedHover .cats__weight-wrapper {
     background-color: #e62e7a;
 }

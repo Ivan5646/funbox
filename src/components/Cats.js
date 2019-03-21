@@ -14,11 +14,8 @@ class Cats extends React.Component {
     selectProduct(id) {
         if( this.state.selected.includes(id) ) {
             this.setState({ selected: this.state.selected.filter(e => e !== id)});
-            //setTimeout( () => {console.log("remove", this.state);}, 200);
         } else {
-            console.log("selectProduct", id);
             this.setState({ selected: [...this.state.selected, id] });
-            //setTimeout( () => {console.log("this.state", this.state);}, 200);
         }
     }
 
@@ -39,8 +36,6 @@ class Cats extends React.Component {
         // add to this.state.cardsMouseLeft
         if ( this.state.selected.includes(id) && !this.state.cardsMouseLeft.includes(id) ) {
             this.setState({ cardsMouseLeft: [...this.state.cardsMouseLeft, id] });
-            //setTimeout( () => {console.log("this.state", this.state);}, 200);
-            console.log("cardMouseLeave added", id);
         }
     }
 
@@ -48,8 +43,6 @@ class Cats extends React.Component {
         // remove from this.state.cardsMouseLeft
         if( this.state.selected.includes(id) && this.state.cardsMouseLeft.includes(id) ) {
             this.setState({ cardsMouseLeft: this.state.cardsMouseLeft.filter(e => e !== id)});
-            //setTimeout( () => {console.log("remove", this.state);}, 200);
-            console.log("cardMouseLeave removed", id);
         }
     }
     
@@ -66,7 +59,6 @@ class Cats extends React.Component {
             } else {
                 return <div className="cats__description cats__description--yellow">{item.description.outOfStock}</div>
             }
-
         }
     }
 
